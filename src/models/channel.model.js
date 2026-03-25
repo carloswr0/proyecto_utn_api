@@ -1,0 +1,13 @@
+import mongoose from "mongoose";
+
+const channelSchema = new mongoose.Schema({
+    fk_id_workspace: { type: mongoose.Schema.Types.ObjectId, ref: "Workspace", required: true },
+    name: { type: String, required: true },
+    description: { type: String},
+    created_at: { type: Date, default: Date.now, required: true },
+})
+
+// Asociados a la colecccion "Channel"
+const ChannelModel = mongoose.model("Channel", channelSchema);
+
+export default ChannelModel;
