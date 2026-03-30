@@ -57,7 +57,7 @@ class AuthService {
   }
 
   async sendVerificationEmail(email, name, verify_email_token) {
-    mailerTransporter.sendMail({
+    await mailerTransporter.sendMail({
       from: ENVIRONTMENT.MAIL_EMAIL,
       to: email,
       subject: "[Proyecto de ExpressNodeMongo] Verificacion de email",
