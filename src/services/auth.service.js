@@ -57,27 +57,18 @@ class AuthService {
   }
 
   async sendVerificationEmail(email, name, verify_email_token) {
-    await mailerTransporter.sendMail(
-      {
-        from: ENVIRONTMENT.MAIL_EMAIL,
-        to: email,
-        subject: "[Proyecto de ExpressNodeMongo] Verificacion de email",
-        html: `
+    mailerTransporter.sendMail({
+      from: ENVIRONTMENT.MAIL_EMAIL,
+      to: email,
+      subject: "[Proyecto de ExpressNodeMongo] Verificacion de email",
+      html: `
           <h1>Hola ${name}, bienvenido a nuestro proyecto de Express, Node y MongoDB</h1>
           <p>Gracias por registrarte en nuestro proyecto. Estamos emocionados de tenerte como parte de nuestra comunidad.</p>
           <p>Si tienes alguna pregunta o necesitas ayuda, no dudes en contactarnos.</p>
           <p><a href="${ENVIRONTMENT.URL_FRONTEND}/verify-email?verify_email_token=${verify_email_token}">Click here to verify your email</a></p>
           <p>¡Disfruta de tu experiencia con nuestro proyecto!</p>
         `,
-      },
-      (error, info) => {
-        if (error) {
-          console.error("Error sending email:", error);
-        } else {
-          console.log("Email sent successfully:", info.response);
-        }
-      },
-    );
+    });
   }
 
   async verifyEmail({ verify_email_token }) {
