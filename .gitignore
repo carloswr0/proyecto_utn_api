@@ -41,7 +41,6 @@ coverage/
 Thumbs.db
 
 # Editor folders
-.vscode/
 .idea/
 
 # Temporary files
