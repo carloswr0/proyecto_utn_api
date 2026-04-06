@@ -42,12 +42,10 @@ class WorkspaceMemberRepository {
       workspace_title: member.fk_id_workspace.title,
       workspace_description: member.fk_id_workspace.description,
     }));
-    console.log(members_mapped);
     return members_mapped;
   }
 
   async getWorkspaceListByUserId(user_id) {
-    console.log(user_id)
     const members = await WorkspaceMemberModel.find({
       fk_id_user: user_id,
     }).populate("fk_id_workspace");
@@ -57,7 +55,6 @@ class WorkspaceMemberRepository {
         member_id: member._id,
         member_role: member.role,
         member_created_at: member.created_at,
-
         workspace_id: member.fk_id_workspace._id,
         workspace_title: member.fk_id_workspace.title,
         workspace_description: member.fk_id_workspace.description,
@@ -65,6 +62,14 @@ class WorkspaceMemberRepository {
     });
 
     return members_mapped;
+  }
+
+  async isMemberPartOfWorkspaceById(user_id, workspace_id) {
+    const member = await WorkspaceMemberModel.findOne({
+      fk_id_user: user_id,
+      fk_id_workspace: workspace_id,
+    });
+    return member ? true : false;
   }
 }
 

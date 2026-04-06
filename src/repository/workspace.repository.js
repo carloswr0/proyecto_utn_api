@@ -7,22 +7,35 @@ class WorkspaceRepository {
       description: description,
       url_image: url_image,
     });
-  };
+  }
 
   async deleteById(user_id) {
     await WorkspaceModel.findByIdAndDelete(user_id);
-  };
+  }
 
   async getById(user_id) {
-    return await WorkspaceModel.findById(user_id)
-  };
+    const workspace = await WorkspaceModel.findById(user_id);
+    return {
+      id: workspace._id,
+      title: workspace.title,
+      description: workspace.description,
+      created_at: workspace.created_at,
+      active: workspace.active,
+      url_image: workspace.url_image,
+    };
+  }
 
   async updateById(user_id, new_workspace_props) {
-    const newRepository = WorkspaceModel.findByIdAndUpdate(user_id, new_workspace_props.id, new_workspace_props, { new: true })
+    const newRepository = WorkspaceModel.findByIdAndUpdate(
+      user_id,
+      new_workspace_props.id,
+      new_workspace_props,
+      { new: true },
+    );
     return newRepository;
-  };
+  }
 }
 
-const workspaceRepository = new WorkspaceRepository()
+const workspaceRepository = new WorkspaceRepository();
 
 export default workspaceRepository;

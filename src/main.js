@@ -7,8 +7,6 @@ import AuthMiddleware from "./middlewares/AuthMiddleware.js";
 import workspaceRouter from "./routers/workspace.router.js";
 import cors from 'cors';
 
-console.log("Server is starting...");
-
 connectMongoDB();
 
 const app = express();

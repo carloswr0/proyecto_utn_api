@@ -2,7 +2,6 @@ import UserModel from "../models/user.model.js";
 
 class UserRepository {
   async create(name, email, password) {
-    console.log("Creating user with email:", email);
     await UserModel.create({
       name: name,
       email: email,

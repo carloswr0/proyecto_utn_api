@@ -19,7 +19,6 @@ class HealthController {
         user: user,
       });
     } catch (error) {
-      console.log("Error checking database health: ", error);
       res.status(500).json({
         message: "Database is not healthy",
         status: 500,
