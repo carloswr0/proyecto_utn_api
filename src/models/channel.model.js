@@ -5,6 +5,7 @@ const channelSchema = new mongoose.Schema({
     name: { type: String, required: true },
     description: { type: String},
     created_at: { type: Date, default: Date.now, required: true },
+    isActive: { type: Boolean, default: true, required: true },
 })
 
 // Asociados a la colecccion "Channel"

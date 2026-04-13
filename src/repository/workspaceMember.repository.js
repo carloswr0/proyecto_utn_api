@@ -69,7 +69,7 @@ class WorkspaceMemberRepository {
       fk_id_user: user_id,
       fk_id_workspace: workspace_id,
     });
-    return member ? true : false;
+    return member;
   }
 }
 

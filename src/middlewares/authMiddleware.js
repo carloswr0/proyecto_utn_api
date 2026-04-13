@@ -1,7 +1,7 @@
 import jwt from "jsonwebtoken";
 import ENVIRONTMENT from "../config/environment.config.js";
 
-function AuthMiddleware(req, res, next) {
+function authMiddleware(req, res, next) {
   try {
     const authHeader = req.headers["authorization"];
     const token = authHeader && authHeader.split(" ")[1]; // Bearer <token>
@@ -20,4 +20,4 @@ function AuthMiddleware(req, res, next) {
   }
 }
 
-export default AuthMiddleware;
+export default authMiddleware;
